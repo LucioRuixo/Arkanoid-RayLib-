@@ -1,7 +1,0 @@
-﻿  Source.cpp
-c:\users\lucio\documents\universidad\2do semestre\desarrollo de videojuegos i\arkanoid\arkanoid\source.cpp(65): error C2065: 'ball': identificador no declarado
-c:\users\lucio\documents\universidad\2do semestre\desarrollo de videojuegos i\arkanoid\arkanoid\source.cpp(103): error C2065: 'ball': identificador no declarado
-c:\users\lucio\documents\universidad\2do semestre\desarrollo de videojuegos i\arkanoid\arkanoid\source.cpp(104): error C2065: 'ball': identificador no declarado
-c:\users\lucio\documents\universidad\2do semestre\desarrollo de videojuegos i\arkanoid\arkanoid\source.cpp(105): error C2065: 'ball': identificador no declarado
-c:\users\lucio\documents\universidad\2do semestre\desarrollo de videojuegos i\arkanoid\arkanoid\source.cpp(106): error C2065: 'ball': identificador no declarado
-c:\users\lucio\documents\universidad\2do semestre\desarrollo de videojuegos i\arkanoid\arkanoid\source.cpp(117): error C2065: 'ball': identificador no declarado
