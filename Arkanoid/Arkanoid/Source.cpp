@@ -1,66 +1,66 @@
 #include "raylib.h"
 
+const int screenWidth = 575;
+const int screenHeight = 675;
+const int PLAYER_SPEED = 5;
+const int BALL_SPEED = 5;
+
+enum GameState
+{
+	MainMenu,
+	SelectionMenu,
+	Playing,
+	GameOver
+};
+
+struct Player
+{
+	Rectangle rec;
+	Vector2 position;
+
+	int lives = 3;
+	int speed = PLAYER_SPEED;
+};
+
+struct Ball
+{
+	Vector2 position;
+	Vector2 direction;
+
+	int speed = BALL_SPEED;
+	int radius;
+};
+
+struct Level
+{
+	int layout[8][10];
+
+	int num;
+};
+
+struct Layouts
+{
+	int l1[8][10];
+	int l2[8][10];
+	int l3[8][10];
+	int l4[8][10];
+	int l5[8][10];
+	int l6[8][10];
+	int l7[8][10];
+	int l8[8][10];
+	int l9[8][10];
+	int l10[8][10];
+};
+
 int main(void)
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	const int screenWidth = 575;
-	const int screenHeight = 675;
-
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
-
-	enum GameState
-	{
-		MainMenu,
-		SelectionMenu,
-		Playing,
-		GameOver
-	};
-
-	struct Player
-	{
-		const int SPEED;
-
-		Rectangle rec;
-		Vector2 position;
-
-		int lives = 3;
-	};
-
-	struct Ball
-	{
-		const int SPEED;
-
-		Vector2 position;
-		Vector2 direction;
-
-		int radius;
-	};
-
-	struct Level
-	{
-		int layout[8][10];
-
-		int num;
-	};
-
-	struct Layouts
-	{
-		int l1[8][10];
-		int l2[8][10];
-		int l3[8][10];
-		int l4[8][10];
-		int l5[8][10];
-		int l6[8][10];
-		int l7[8][10];
-		int l8[8][10];
-		int l9[8][10];
-		int l10[8][10];
-	};
 
 	Vector2 cursor;
 
-	GameState currentGameState;
+	GameState currentGameState = GameState::MainMenu;
 
 	Ball ball;
 	ball.position = { (float)screenWidth / 2, (float)screenHeight / 2 };
@@ -71,7 +71,7 @@ int main(void)
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
-		while (currentGameState == GameState::MainMenu)
+		while (!WindowShouldClose() && currentGameState == GameState::MainMenu)
 		{
 			cursor = GetMousePosition();
 
@@ -97,7 +97,7 @@ int main(void)
 			ClearBackground(BLACK);
 		}
 
-		while (currentGameState == GameState::Playing)
+		while (!WindowShouldClose() && currentGameState == GameState::Playing)
 		{
 			// Update
 			//----------------------------------------------------------------------------------
