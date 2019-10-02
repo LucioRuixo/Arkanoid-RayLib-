@@ -1,8 +1,8 @@
-#include "raylib.h"
+#include "game.h"
 
-const int screenWidth = 575;
-const int screenHeight = 675;
-const int PLAYER_SPEED = 5;
+const int SCREEN_WIDTH = 405; //9
+const int SCREEN_HEIGHT = 720; //16
+const int PLADDLE_SPEED = 5;
 const int BALL_SPEED = 5;
 
 enum GameState

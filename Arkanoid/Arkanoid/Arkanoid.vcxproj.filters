@@ -13,10 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Game">
+      <UniqueIdentifier>{976d88b9-d2d0-409c-b5b9-dcac0be53255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Game\States">
+      <UniqueIdentifier>{f6e75c1f-6649-477c-84cc-ce36aeabb375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Game\Elements">
+      <UniqueIdentifier>{59271f03-311f-42bd-abab-832ad194e922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Game">
+      <UniqueIdentifier>{51db53c0-4665-4042-9b5e-d5d1dfd02c7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Game\Elements">
+      <UniqueIdentifier>{fe9e152d-5e6a-4c94-a7b1-d9545734b69d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Game\States">
+      <UniqueIdentifier>{f033aba8-5493-48c2-bbf4-75b91cd44a1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Archivos de recursos</Filter>
+    <ClCompile Include="..\src\Game\game.cpp">
+      <Filter>Archivos de recursos\Game</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Game\game.h">
+      <Filter>Archivos de encabezado\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Elements\ball.h">
+      <Filter>Archivos de encabezado\Game\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Elements\paddle.h">
+      <Filter>Archivos de encabezado\Game\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Elements\layouts.h">
+      <Filter>Archivos de encabezado\Game\Elements</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
