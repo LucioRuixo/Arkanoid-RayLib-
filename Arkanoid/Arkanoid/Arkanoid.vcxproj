@@ -19,14 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Game\Elements\buttons.cpp" />
     <ClCompile Include="..\src\Game\game.cpp" />
+    <ClCompile Include="..\src\Game\States\gameplay.cpp" />
+    <ClCompile Include="..\src\Game\States\game_over.cpp" />
+    <ClCompile Include="..\src\Game\States\main_menu.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Game\Elements\ball.h" />
+    <ClInclude Include="..\src\Game\Elements\buttons.h" />
     <ClInclude Include="..\src\Game\Elements\levels.h" />
     <ClInclude Include="..\src\Game\Elements\paddle.h" />
     <ClInclude Include="..\src\Game\game.h" />
+    <ClInclude Include="..\src\Game\States\gameplay.h" />
+    <ClInclude Include="..\src\Game\States\game_over.h" />
+    <ClInclude Include="..\src\Game\States\main_menu.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -88,8 +96,8 @@
     <IntDir>$(SolutionDir)obj\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)</OutDir>
-    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)</OutDir>
@@ -101,7 +109,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\include;$(SolutionDir)src\Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -111,7 +119,7 @@
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PreBuildEvent>
-      <Command>copy "$(SolutionDir)lib\bin\raylib.dll" "$(ProjectDir)"</Command>
+      <Command>copy "$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\bin\raylib.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

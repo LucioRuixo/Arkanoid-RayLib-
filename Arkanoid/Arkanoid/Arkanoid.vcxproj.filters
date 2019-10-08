@@ -45,6 +45,18 @@
     <ClInclude Include="..\src\Game\Elements\levels.h">
       <Filter>Archivos de encabezado\Game\Elements</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Game\States\main_menu.h">
+      <Filter>Archivos de encabezado\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\States\gameplay.h">
+      <Filter>Archivos de encabezado\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\States\game_over.h">
+      <Filter>Archivos de encabezado\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Elements\buttons.h">
+      <Filter>Archivos de encabezado\Game\Elements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -52,6 +64,18 @@
     </ClCompile>
     <ClCompile Include="..\src\Game\game.cpp">
       <Filter>Archivos de origen\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\States\main_menu.cpp">
+      <Filter>Archivos de origen\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Elements\buttons.cpp">
+      <Filter>Archivos de origen\Game\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\States\gameplay.cpp">
+      <Filter>Archivos de origen\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\States\game_over.cpp">
+      <Filter>Archivos de origen\Game\States</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
 
 namespace game
 {
-const int SCREEN_WIDTH = 405; //9
+const int SCREEN_WIDTH = 1280; //9
 const int SCREEN_HEIGHT = 720; //16
 const int PLADDLE_SPEED = 5;
 const int BALL_SPEED = 5;
@@ -18,6 +18,7 @@ enum GameState
 };
 
 extern GameState currentGameState;
+extern Vector2 cursor;
 
 extern float deltaTime;
 
