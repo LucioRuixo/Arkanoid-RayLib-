@@ -22,20 +22,15 @@
     <Filter Include="Archivos de encabezado\Game\Elements">
       <UniqueIdentifier>{59271f03-311f-42bd-abab-832ad194e922}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de recursos\Game">
+    <Filter Include="Archivos de origen\Game">
       <UniqueIdentifier>{51db53c0-4665-4042-9b5e-d5d1dfd02c7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de recursos\Game\Elements">
+    <Filter Include="Archivos de origen\Game\Elements">
       <UniqueIdentifier>{fe9e152d-5e6a-4c94-a7b1-d9545734b69d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de recursos\Game\States">
+    <Filter Include="Archivos de origen\Game\States">
       <UniqueIdentifier>{f033aba8-5493-48c2-bbf4-75b91cd44a1f}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\Game\game.cpp">
-      <Filter>Archivos de recursos\Game</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Game\game.h">
@@ -47,8 +42,16 @@
     <ClInclude Include="..\src\Game\Elements\paddle.h">
       <Filter>Archivos de encabezado\Game\Elements</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Game\Elements\layouts.h">
+    <ClInclude Include="..\src\Game\Elements\levels.h">
       <Filter>Archivos de encabezado\Game\Elements</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\game.cpp">
+      <Filter>Archivos de origen\Game</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

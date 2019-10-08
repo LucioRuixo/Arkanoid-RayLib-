@@ -1,0 +1,21 @@
+4:
+-Implementa los requisitos de entrega
+-No hay bugs ni crashes
+-Implementa las características básicas
+
+5:
+-Mínimo 3 power-ups
+-Se puede dirigir el ángulo de la pelota
+-Mínimo 2 tipos de bloques
+-Separación lógica del codigo
+
+6:
+-Mínimo 3 niveles diferentes
+-El jugador tiene 3 vidas y pierde cuando se agotan
+-Se ve un puntaje mientras se juega y hay una pantalla con los 10 highscores
+
+7:
+-Funciona en múltiples resoluciones y aspect ratios
+
+8, 9, 10:
+-"Calidad superlativa"
