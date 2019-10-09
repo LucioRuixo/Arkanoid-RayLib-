@@ -4,7 +4,12 @@ namespace game
 {
 namespace gameplay
 {
-void Execute()
+void Update()
+{
+
+}
+
+void Draw()
 {
 
 }

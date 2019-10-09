@@ -5,7 +5,8 @@ namespace game
 {
 namespace main_menu
 {
-void Execute();
+void Update();
+void Draw();
 }
 }
 

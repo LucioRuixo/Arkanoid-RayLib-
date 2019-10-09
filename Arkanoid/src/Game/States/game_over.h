@@ -5,7 +5,8 @@ namespace game
 {
 namespace game_over
 {
-void Execute();
+	void Update();
+	void Draw();
 }
 }
 

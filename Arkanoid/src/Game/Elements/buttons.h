@@ -22,6 +22,8 @@ struct Button
 	Rectangle rec;
 
 	const char* text;
+
+	bool cursorOverButton;
 };
 
 extern Button continue_;
@@ -31,7 +33,8 @@ extern Button pause;
 extern Button play;
 extern Button return_;
 
-void GenerateButton(Button button);
+void CheckButtonPressing(Button button);
+void DrawButton(Button button);
 namespace main_menu
 {
 	void InitializeButtons(Button &exit, Button &fullScreen_, Button &play);
@@ -44,6 +47,9 @@ namespace game_over
 {
 	void InitializeButtons(Button return_);
 }
+void UpdateButton(Button button);
+
+bool CursorOverButton(Button button);
 }
 
 #endif

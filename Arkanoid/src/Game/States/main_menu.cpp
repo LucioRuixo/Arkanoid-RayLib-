@@ -7,34 +7,24 @@ namespace game
 {
 namespace main_menu
 {
-static void Update()
+void Update()
 {
-	cursor = GetMousePosition();
-
-	GenerateButton(fullScreen_);
-	GenerateButton(play);
-	GenerateButton(exit);
+	UpdateButton(exit);
+	UpdateButton(fullScreen_);
+	UpdateButton(play);
 }
 
-static void Draw()
+void Draw()
 {
-	DrawText("ARKANOID!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2 - 50, 20, RAYWHITE);
-	DrawText("Controles:  <- y ->  o  A y W", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2, 20, RAYWHITE);
-	DrawText("Rompe todos los bloques para ganar.", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2 + 50, 20, RAYWHITE);
-}
+	ClearBackground(BLACK);
 
-void Execute()
-{
-	while (!WindowShouldClose() && currentGameState == GameState::MainMenu)
-	{
-		ClearBackground(BLACK);
+	DrawText("ARKANOID!", screenWidth/ 3, screenHeight / 2 - 50, 20, RAYWHITE);
+	DrawText("Controles:  <- y ->  o  A y W", screenWidth / 3, screenHeight / 2, 20, RAYWHITE);
+	DrawText("Rompe todos los bloques para ganar.", screenWidth / 3, screenHeight / 2 + 50, 20, RAYWHITE);
 
-		Update();
-
-		Draw();
-
-		EndDrawing();
-	}
+	DrawButton(exit);
+	DrawButton(fullScreen_);
+	DrawButton(play);
 }
 }
 }
