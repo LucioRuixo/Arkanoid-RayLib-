@@ -47,7 +47,7 @@ namespace game_over
 {
 	void InitializeButtons(Button return_);
 }
-void UpdateButton(Button button);
+void UpdateButton(Button &button);
 
 bool CursorOverButton(Button button);
 }

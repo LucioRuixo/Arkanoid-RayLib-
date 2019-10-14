@@ -4,8 +4,6 @@
 #include "States/gameplay.h"
 #include "States/game_over.h"
 #include "Elements/buttons.h"
-#include <iostream>
-using namespace std;
 
 namespace game
 {
@@ -19,7 +17,9 @@ bool fullscreenOn;
 bool gameShouldClose;
 
 int screenWidth;
+int screenWidthScalar;
 int screenHeight;
+int screenHeightScalar;
 
 float deltaTime;
 
@@ -31,8 +31,10 @@ static void Initialize()
 	fullscreenOn = false;
 	gameShouldClose = false;
 
-	screenWidth = 1280;
-	screenHeight = 720;
+	screenWidth = WINDOW_WIDTH;
+	screenWidthScalar = screenWidth / 1000;
+	screenHeight = WINDOW_HEIGHT;
+	screenHeightScalar = screenHeight / 1000;
 
 	deltaTime = 0;
 
@@ -48,8 +50,6 @@ static void Initialize()
 
 static void Update()
 {
-	cout << GetMonitorCount() << ", " << GetMonitorWidth(0) << "x" << GetMonitorHeight(0) << endl;
-
 	cursor = GetMousePosition();
 
 	UpdateDeltaTime();

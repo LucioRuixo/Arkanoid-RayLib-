@@ -23,8 +23,10 @@ extern Vector2 cursor;
 extern bool fullscreenOn;
 extern bool gameShouldClose;
 
-extern int screenWidth; //9
-extern int screenHeight; //16
+extern int screenWidth;
+extern int screenWidthScalar;
+extern int screenHeight;
+extern int screenHeightScalar;
 
 extern float deltaTime;
 

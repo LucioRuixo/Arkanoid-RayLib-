@@ -1,6 +1,8 @@
 #include "buttons.h"
 
 #include "game.h"
+#include <iostream>
+using namespace std;
 
 namespace game
 {
@@ -60,25 +62,26 @@ namespace main_menu
 void InitializeButtons(Button &exit, Button &fullScreen_, Button &play)
 {
 	exit.function = Function::ExitGame;
-	exit.rec.width = 60;
-	exit.rec.height = 30;
-	exit.rec.x = screenWidth / 2 - 20;
-	exit.rec.y = screenHeight / 2 + 115;
+	exit.rec.width = 60 * screenWidthScalar;
+	exit.rec.height = 30 * screenHeightScalar;
+	exit.rec.x = static_cast<float>(screenWidth) / 2 - 20;
+	exit.rec.y = static_cast<float>(screenHeight) / 2 + 115;
 	exit.text = "Exit";
 
 	fullScreen_.function = Function::ActivateFullscreen;
-	fullScreen_.rec.width = 190;
-	fullScreen_.rec.height = 30;
-	fullScreen_.rec.x = screenWidth - fullScreen_.rec.width - 10;
-	fullScreen_.rec.y = 10;
+	fullScreen_.rec.width = 190 * screenWidthScalar;
+	fullScreen_.rec.height = 30 * screenHeightScalar;
+	fullScreen_.rec.x = screenWidth - fullScreen_.rec.width - 10 * screenWidthScalar;
+	fullScreen_.rec.y = 10 * screenHeightScalar;
 	fullScreen_.text = "Fullscreen";
+	cout << "Fullscreen: width " << fullScreen_.rec.width;
 
 	play.function = Function::ChangeState;
 	play.state = GameState::Gameplay;
-	play.rec.width = 80;
-	play.rec.height = 30;
-	play.rec.x = screenWidth / 2 - 35;
-	play.rec.y = screenHeight / 2 + 45;
+	play.rec.width = 80 * screenWidthScalar;
+	play.rec.height = 30 * screenHeightScalar;
+	play.rec.x = static_cast<float>(screenWidth) / 2 - 35 * screenWidthScalar;
+	play.rec.y = static_cast<float>(screenHeight) / 2 + 45 * screenHeightScalar;
 	play.text = "PLAY";
 }
 }
@@ -88,25 +91,25 @@ namespace gameplay
 void InitializeButtons(Button &continue_, Button &pause, Button return_)
 {
 	continue_.function = Function::Pause;
-	continue_.rec.width = 110;
-	continue_.rec.height = 30;
+	continue_.rec.width = 110 * screenWidthScalar;
+	continue_.rec.height = 30 * screenHeightScalar;
 	continue_.rec.x = screenWidth / 2 - continue_.rec.width / 2;
 	//continue_.rec.y = screenHeight / 2 - continue_.rec.height / 2 - ((pauseMenu.rec.height - continue_.rec.height * 3) / 4 + continue_.rec.height);
 	continue_.text = "Continuar";
 
 	pause.function = Function::Pause;
-	pause.rec.width = 95;
-	pause.rec.height = 30;
-	pause.rec.x = 10;
-	pause.rec.y = 10;
+	pause.rec.width = 95 * screenWidthScalar;
+	pause.rec.height = 30 * screenHeightScalar;
+	pause.rec.x = 10 * screenWidthScalar;
+	pause.rec.y = 10 * screenHeightScalar;
 	pause.text = "|| Pausa";
 
 	return_.function = Function::ChangeState;
 	return_.state = GameState::MainMenu;
-	return_.rec.width = 95;
-	return_.rec.height = 30;
-	return_.rec.x = 10;
-	return_.rec.y = 10;
+	return_.rec.width = 95 * screenWidthScalar;
+	return_.rec.height = 30 * screenHeightScalar;
+	return_.rec.x = 10 * screenWidthScalar;
+	return_.rec.y = 10 * screenHeightScalar;
 	return_.text = "< Return";
 }
 }
@@ -117,15 +120,15 @@ namespace game_over
 	{
 		return_.function = Function::ChangeState;
 		return_.state = GameState::MainMenu;
-		return_.rec.width = 95;
-		return_.rec.height = 30;
-		return_.rec.x = 10;
-		return_.rec.y = 10;
+		return_.rec.width = 95 * screenWidthScalar;
+		return_.rec.height = 30 * screenHeightScalar;
+		return_.rec.x = 10 * screenWidthScalar;
+		return_.rec.y = 10 * screenHeightScalar;
 		return_.text = "< Return";
 	}
 }
 
-void UpdateButton(Button button)
+void UpdateButton(Button &button)
 {
 	if (CursorOverButton(button))
 	{
@@ -133,6 +136,8 @@ void UpdateButton(Button button)
 
 		CheckButtonPressing(button);
 	}
+	else
+		button.cursorOverButton = false;
 }
 
 bool CursorOverButton(Button button)
@@ -145,26 +150,5 @@ bool CursorOverButton(Button button)
 	}
 	else
 		return false;
-
-	if (((cursor.x > button.rec.x && cursor.x < button.rec.x + button.rec.width)
-		&&
-		(cursor.y > button.rec.y && cursor.y < button.rec.y + button.rec.height)) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-	{
-		switch (button.function)
-		{
-		case Function::ChangeState:
-			currentGameState = button.state;
-			break;
-		case Function::ExitGame:
-			gameShouldClose = true;
-			break;
-		case Function::Pause:
-			//pauseActive ? pauseActive = false : pauseActive = true;
-			break;
-		case Function::ActivateFullscreen:
-			ToggleFullscreen();
-			break;
-		}
-	}
 }
 }
