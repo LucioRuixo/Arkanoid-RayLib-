@@ -1,9 +1,11 @@
 #include "game.h"
 
+#include "Elements/buttons.h"
+#include "Elements/levels.h"
+#include "Elements/paddle.h"
 #include "States/main_menu.h"
 #include "States/gameplay.h"
 #include "States/game_over.h"
-#include "Elements/buttons.h"
 
 namespace game
 {
@@ -16,12 +18,12 @@ Vector2 cursor;
 bool fullscreenOn;
 bool gameShouldClose;
 
-int screenWidth;
-int screenWidthScalar;
 int screenHeight;
-int screenHeightScalar;
+int screenWidth;
 
 float deltaTime;
+float screenHeightScalar;
+float screenWidthScalar;
 
 static void Initialize()
 {
@@ -32,9 +34,9 @@ static void Initialize()
 	gameShouldClose = false;
 
 	screenWidth = WINDOW_WIDTH;
-	screenWidthScalar = screenWidth / 1000;
+	screenWidthScalar = static_cast<float>(screenWidth) / 100;
 	screenHeight = WINDOW_HEIGHT;
-	screenHeightScalar = screenHeight / 1000;
+	screenHeightScalar = static_cast<float>(screenHeight) / 100;
 
 	deltaTime = 0;
 
@@ -42,9 +44,9 @@ static void Initialize()
 	time = 0;
 
 	InitWindow(screenWidth, screenHeight, "ARKANOID!");
-	main_menu::InitializeButtons(exit, fullScreen_, play);
-	gameplay::InitializeButtons(continue_, pause, return_);
-	game_over::InitializeButtons(return_);
+	main_menu::InitializeButtons();
+	gameplay::Initialize();
+	game_over::InitializeButtons();
 	SetTargetFPS(60);
 }
 
@@ -77,6 +79,7 @@ static void Update()
 static void Draw()
 {
 	BeginDrawing();
+	ClearBackground(BLACK);
 
 	switch (currentGameState)
 	{

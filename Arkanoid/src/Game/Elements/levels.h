@@ -1,18 +1,35 @@
-#ifndef LAYOUTS_H
-#define LAYOUTS_H
+#ifndef LEVELS_H
+#define LEVELS_H
+
+#include "raylib.h"
 
 namespace game
 {
 namespace levels
 {
-struct Level
+const int TOTAL_DISTANCE_BETWEEN_BRICKS = 50;
+const int LAYOUT_WIDTH = 10;
+const int LAYOUT_HEIGHT = 8;
+
+struct Brick
 {
-	int layout[8][10];
+	Color color;
+	Rectangle rec;
+
+	int state;
 };
 
-extern Level levels[3];
+extern Brick layout[LAYOUT_HEIGHT][LAYOUT_WIDTH];
 
+extern int playScreenMinX;
+extern int playScreenMaxX;
+extern int brickHeight;
+extern int brickWidth;
+
+void CheckCollisions();
+void Draw();
 void Initialize();
+void InitializeLayout();
 }
 }
 

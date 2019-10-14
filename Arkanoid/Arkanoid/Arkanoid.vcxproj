@@ -19,7 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Game\Elements\ball.cpp" />
     <ClCompile Include="..\src\Game\Elements\buttons.cpp" />
+    <ClCompile Include="..\src\Game\Elements\levels.cpp" />
+    <ClCompile Include="..\src\Game\Elements\paddle.cpp" />
     <ClCompile Include="..\src\Game\game.cpp" />
     <ClCompile Include="..\src\Game\States\gameplay.cpp" />
     <ClCompile Include="..\src\Game\States\game_over.cpp" />
@@ -27,6 +30,7 @@
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\lib\raylib-2.5.0-Win32-msvc15\include\raylib.h" />
     <ClInclude Include="..\src\Game\Elements\ball.h" />
     <ClInclude Include="..\src\Game\Elements\buttons.h" />
     <ClInclude Include="..\src\Game\Elements\levels.h" />

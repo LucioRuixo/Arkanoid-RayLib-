@@ -57,6 +57,9 @@
     <ClInclude Include="..\src\Game\Elements\buttons.h">
       <Filter>Archivos de encabezado\Game\Elements</Filter>
     </ClInclude>
+    <ClInclude Include="..\lib\raylib-2.5.0-Win32-msvc15\include\raylib.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -76,6 +79,15 @@
     </ClCompile>
     <ClCompile Include="..\src\Game\States\game_over.cpp">
       <Filter>Archivos de origen\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Elements\paddle.cpp">
+      <Filter>Archivos de origen\Game\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Elements\levels.cpp">
+      <Filter>Archivos de origen\Game\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Elements\ball.cpp">
+      <Filter>Archivos de origen\Game\Elements</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

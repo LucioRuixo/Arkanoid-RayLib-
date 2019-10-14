@@ -16,11 +16,9 @@ void Update()
 
 void Draw()
 {
-	ClearBackground(BLACK);
-
-	DrawText("ARKANOID!", screenWidth/ 3, screenHeight / 2 - 50, 20, RAYWHITE);
-	DrawText("Controles:  <- y ->  o  A y W", screenWidth / 3, screenHeight / 2, 20, RAYWHITE);
-	DrawText("Rompe todos los bloques para ganar.", screenWidth / 3, screenHeight / 2 + 50, 20, RAYWHITE);
+	DrawText("ARKANOID!", buttonsX, screenHeight / 3, 30, RAYWHITE);
+	DrawText("Controles:  <- y ->  o  A y W", buttonsX, screenHeight / 2 - 15, 20, RAYWHITE);
+	DrawText("Rompe todos los bloques para ganar.", buttonsX, screenHeight / 2 + 15, 20, RAYWHITE);
 
 	DrawButton(exit);
 	DrawButton(fullScreen_);

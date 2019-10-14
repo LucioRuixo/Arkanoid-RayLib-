@@ -7,19 +7,23 @@ namespace game
 {
 namespace ball
 {
-const float SPEED;
-
 struct Ball
 {
+	Color color;
 	Vector2 direction;
 	Vector2 position;
 	
+	bool still;
+	bool right;
+	bool up;
+
 	float radius;
-	float speed = SPEED;
+	float speed;
 };
 
 extern Ball ball;
 
+void Draw();
 void Initialize();
 }
 }

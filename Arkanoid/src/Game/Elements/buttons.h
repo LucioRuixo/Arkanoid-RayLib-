@@ -33,19 +33,21 @@ extern Button pause;
 extern Button play;
 extern Button return_;
 
+extern float buttonsX;
+
 void CheckButtonPressing(Button button);
 void DrawButton(Button button);
 namespace main_menu
 {
-	void InitializeButtons(Button &exit, Button &fullScreen_, Button &play);
+	void InitializeButtons();
 }
 namespace gameplay
 {
-	void InitializeButtons(Button &continue_, Button &pause, Button return_);
+	void InitializeButtons();
 }
 namespace game_over
 {
-	void InitializeButtons(Button return_);
+	void InitializeButtons();
 }
 void UpdateButton(Button &button);
 

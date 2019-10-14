@@ -7,20 +7,21 @@ namespace game
 {
 namespace paddle
 {
-const float SPEED;
+const float SPEED = 25;
 
 struct Paddle
 {
+	Color color;
 	Rectangle rec;
-	Vector2 position;
 
-	int lives = 3;
+	int lives;
 
-	float speed = SPEED;
+	float speed;
 };
 
 extern Paddle paddle;
 
+void Draw();
 void Initialize();
 }
 }
