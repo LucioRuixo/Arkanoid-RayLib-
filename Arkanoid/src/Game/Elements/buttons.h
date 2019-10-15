@@ -12,7 +12,6 @@ enum Function
 	ActivateFullscreen,
 	ChangeState,
 	ExitGame,
-	Pause
 };
 
 struct Button
@@ -26,7 +25,6 @@ struct Button
 	bool cursorOverButton;
 };
 
-extern Button continue_;
 extern Button exit;
 extern Button fullScreen_;
 extern Button pause;
@@ -38,10 +36,6 @@ extern float buttonsX;
 void CheckButtonPressing(Button button);
 void DrawButton(Button button);
 namespace main_menu
-{
-	void InitializeButtons();
-}
-namespace gameplay
 {
 	void InitializeButtons();
 }

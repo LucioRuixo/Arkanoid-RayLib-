@@ -21,6 +21,7 @@ struct Paddle
 
 extern Paddle paddle;
 
+void CheckColissionWithBall();
 void Draw();
 void Initialize();
 }

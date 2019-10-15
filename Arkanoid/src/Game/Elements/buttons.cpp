@@ -6,7 +6,6 @@ using namespace std;
 
 namespace game
 {
-Button continue_;
 Button exit;
 Button fullScreen_;
 Button pause;
@@ -19,6 +18,8 @@ void CheckButtonPressing(Button button)
 {
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 	{
+		PlaySound(buttonSFX);
+
 		switch (button.function)
 		{
 		case Function::ChangeState:
@@ -26,9 +27,6 @@ void CheckButtonPressing(Button button)
 			break;
 		case Function::ExitGame:
 			gameShouldClose = true;
-			break;
-		case Function::Pause:
-			//pauseActive ? pauseActive = false : pauseActive = true;
 			break;
 		case Function::ActivateFullscreen:
 			if (!fullscreenOn)
@@ -87,34 +85,6 @@ void InitializeButtons()
 	play.rec.x = buttonsX;
 	play.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2;
 	play.text = "PLAY";
-}
-}
-
-namespace gameplay
-{
-void InitializeButtons()
-{
-	continue_.function = Function::Pause;
-	continue_.rec.width = 11.0f * screenWidthScalar;
-	continue_.rec.height = 3.0f * screenHeightScalar;
-	continue_.rec.x = screenWidth / 2 - continue_.rec.width / 2;
-	//continue_.rec.y = screenHeight / 2 - continue_.rec.height / 2 - ((pauseMenu.rec.height - continue_.rec.height * 3) / 4 + continue_.rec.height);
-	continue_.text = "Continuar";
-
-	pause.function = Function::Pause;
-	pause.rec.width = 9.0f * screenWidthScalar;
-	pause.rec.height = 3.0f * screenHeightScalar;
-	pause.rec.x = 1.0f * screenWidthScalar;
-	pause.rec.y = 1.0f * screenHeightScalar;
-	pause.text = "|| Pausa";
-
-	return_.function = Function::ChangeState;
-	return_.state = GameState::MainMenu;
-	return_.rec.width = 9.0f * screenWidthScalar;
-	return_.rec.height = 3.0f * screenHeightScalar;
-	return_.rec.x = 1.0f * screenWidthScalar;
-	return_.rec.y = 1.0f * screenHeightScalar;
-	return_.text = "< Return";
 }
 }
 

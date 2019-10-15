@@ -24,6 +24,11 @@ enum GameState
 extern GameState currentGameState;
 extern Vector2 cursor;
 
+extern Music music;
+
+extern Sound buttonSFX;
+extern Sound hitSFX;
+
 extern bool fullscreenOn;
 extern bool gameShouldClose;
 

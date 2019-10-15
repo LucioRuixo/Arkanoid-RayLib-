@@ -15,15 +15,44 @@ int playScreenMaxX;
 int brickHeight;
 int brickWidth;
 
-void CheckCollisions()
+void CheckColissionWithBall()
 {
+	if (ball::ball.position.x - ball::ball.radius <= playScreenMinX)
+	{
+		PlaySound(hitSFX);
+		ball::ball.right = true;
+	}
+
+	if (ball::ball.position.x + ball::ball.radius >= playScreenMaxX)
+	{
+		PlaySound(hitSFX);
+		ball::ball.right = false;
+	}
+
+	if (ball::ball.position.y - ball::ball.radius <= 0)
+	{
+		PlaySound(hitSFX);
+		ball::ball.up = false;
+	}
+
+	if (ball::ball.position.y + ball::ball.radius > screenHeight)
+	{
+		PlaySound(hitSFX);
+		paddle::paddle.lives--;
+
+		ball::ball.up = true;
+		ball::ball.still = true;
+	}
+
 	for (int y = 0; y < LAYOUT_HEIGHT; y++)
 	{
 		for (int x = 0; x < LAYOUT_WIDTH; x++)
 		{
-			if (CheckCollisionCircleRec(ball::ball.position, ball::ball.radius, layout[y][x].rec))
+			if (layout[y][x].state == 1 && CheckCollisionCircleRec(ball::ball.position, ball::ball.radius, layout[y][x].rec))
 			{
-				ball::ball.up ? ball::ball.up = false : ball::ball.up = true;
+				PlaySound(hitSFX);
+
+				ball::ball.up = false;
 				layout[y][x].state = 0;
 			}
 		}
@@ -37,7 +66,7 @@ void Draw()
 		for (int x = 0; x < LAYOUT_WIDTH; x++)
 		{
 			if (layout[y][x].state == 1)
-				DrawRectangle(layout[y][x].rec.x, layout[y][x].rec.y, layout[y][x].rec.width, layout[y][x].rec.height, layout[y][x].color);
+				DrawRectangle(static_cast<int>(layout[y][x].rec.x), static_cast<int>(layout[y][x].rec.y), static_cast<int>(layout[y][x].rec.width), static_cast<int>(layout[y][x].rec.height), layout[y][x].color);
 		}
 	}
 }
@@ -65,10 +94,10 @@ void InitializeLayout()
 		{
 			layout[y][x].color = RAYWHITE;
 
-			layout[y][x].rec.width = brickWidth;
-			layout[y][x].rec.height = brickHeight;
-			layout[y][x].rec.x = playScreenMinX + TOTAL_DISTANCE_BETWEEN_BRICKS / (LAYOUT_WIDTH) + brickXSum;
-			layout[y][x].rec.y = brickY;
+			layout[y][x].rec.width = static_cast<float>(brickWidth);
+			layout[y][x].rec.height = static_cast<float>(brickHeight);
+			layout[y][x].rec.x = static_cast<float>(playScreenMinX) + static_cast<float>(TOTAL_DISTANCE_BETWEEN_BRICKS) / static_cast<float>(LAYOUT_WIDTH) + static_cast<float>(brickXSum);
+			layout[y][x].rec.y = static_cast<float>(brickY);
 
 			layout[y][x].state = 1;
 

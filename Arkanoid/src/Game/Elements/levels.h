@@ -26,7 +26,7 @@ extern int playScreenMaxX;
 extern int brickHeight;
 extern int brickWidth;
 
-void CheckCollisions();
+void CheckColissionWithBall();
 void Draw();
 void Initialize();
 void InitializeLayout();

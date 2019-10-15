@@ -15,6 +15,11 @@ static double time;
 GameState currentGameState;
 Vector2 cursor;
 
+Music music;
+
+Sound buttonSFX;
+Sound hitSFX;
+
 bool fullscreenOn;
 bool gameShouldClose;
 
@@ -24,6 +29,22 @@ int screenWidth;
 float deltaTime;
 float screenHeightScalar;
 float screenWidthScalar;
+
+static void InitializeSounds()
+{
+	music = LoadMusicStream("audio/music/music.ogg");
+
+	buttonSFX = LoadSound("audio/SFX/buttonSFX.ogg");
+	hitSFX = LoadSound("audio/SFX/hitSFX.ogg");
+}
+
+static void UnloadSounds()
+{
+	UnloadMusicStream(music);
+
+	UnloadSound(buttonSFX);
+	UnloadSound(hitSFX);
+}
 
 static void Initialize()
 {
@@ -44,6 +65,9 @@ static void Initialize()
 	time = 0;
 
 	InitWindow(screenWidth, screenHeight, "ARKANOID!");
+	SetExitKey(KEY_P);
+	InitAudioDevice();
+	InitializeSounds();
 	main_menu::InitializeButtons();
 	gameplay::Initialize();
 	game_over::InitializeButtons();
@@ -55,6 +79,14 @@ static void Update()
 	cursor = GetMousePosition();
 
 	UpdateDeltaTime();
+
+	if (IsKeyPressed(KEY_M))
+	{
+		if (IsMusicPlaying(music))
+			PauseMusicStream(music);
+		else
+			ResumeMusicStream(music);
+	}
 
 	switch (currentGameState)
 	{
@@ -105,12 +137,15 @@ static void Draw()
 
 static void Close()
 {
+	UnloadSounds();
+	CloseAudioDevice();
 	CloseWindow();
 }
 
 void Execute()
 {
 	Initialize();
+	PlayMusicStream(music);
 
 	while (!gameShouldClose)
 	{
@@ -124,6 +159,7 @@ void Execute()
 			gameShouldClose = true;
 	}
 
+	StopMusicStream(music);
 	Close();
 }
 

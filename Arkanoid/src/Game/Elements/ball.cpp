@@ -11,23 +11,39 @@ Ball ball;
 
 void Draw()
 {
-	DrawCircle(ball.position.x, ball.position.y, ball.radius, ball.color);
+	DrawCircle(static_cast<int>(ball.position.x), static_cast<int>(ball.position.y), ball.radius, ball.color);
 }
 
 void Initialize()
 {
 	ball.color = RAYWHITE;
 
-	ball.radius = 5 * screenWidthScalar;
+	ball.radius = 1 * screenWidthScalar;
 
-	ball.position.x = screenWidth / 2;
-	ball.position.y = (paddle::paddle.rec.y - ball.radius / 2) * screenHeightScalar;
+	ball.position.x = static_cast<float>(screenWidth) / 2;
+	ball.position.y = paddle::paddle.rec.y - paddle::paddle.rec.height / 2 - ball.radius;
 
 	ball.still = true;
 	ball.right = true;
 	ball.up = true;
+}
 
-	ball.speed = 5;
+void Movement()
+{
+	if (ball.direction.x > MAX_SPEED)
+		ball.direction.x = MAX_SPEED;
+	ball.direction.y = MAX_SPEED - ball.direction.x;
+
+	if (ball.still)
+	{
+		ball.position.x = paddle::paddle.rec.x + paddle::paddle.rec.width / 2;
+		ball.position.y = paddle::paddle.rec.y - paddle::paddle.rec.height / 2 - ball.radius;
+	}
+	else
+	{
+		ball.right ? ball.position.x += ball.direction.x * screenWidthScalar * deltaTime : ball.position.x -= ball.direction.x * screenWidthScalar * deltaTime;
+		ball.up ? ball.position.y -= ball.direction.y * screenHeightScalar * deltaTime : ball.position.y += ball.direction.y * screenHeightScalar * deltaTime;
+	}
 }
 }
 }

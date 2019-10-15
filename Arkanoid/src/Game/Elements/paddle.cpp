@@ -1,6 +1,7 @@
 #include "paddle.h"
 
 #include "game.h"
+#include "Elements/ball.h"
 
 namespace game
 {
@@ -8,9 +9,34 @@ namespace paddle
 {
 Paddle paddle;
 
+static float newBallDirectionX;
+
+void CheckColissionWithBall()
+{
+	if (CheckCollisionCircleRec(ball::ball.position, ball::ball.radius, paddle.rec))
+	{
+		PlaySound(hitSFX);
+
+		ball::ball.up = true;
+
+		newBallDirectionX = (ball::ball.position.x - paddle.rec.x + paddle.rec.width / 2) / 4;
+		cout << newBallDirectionX << endl;
+		if (newBallDirectionX < ball::MAX_SPEED / 2)
+		{
+			ball::ball.right = false;
+		}
+		else
+		{
+			ball::ball.right = true;
+		}
+
+		ball::ball.direction.x = newBallDirectionX;
+	}
+}
+
 void Draw()
 {
-	DrawRectangle(paddle.rec.x, paddle.rec.y, paddle.rec.width, paddle.rec.height, paddle.color);
+	DrawRectangle(static_cast<int>(paddle.rec.x), static_cast<int>(paddle.rec.y), static_cast<int>(paddle.rec.width), static_cast<int>(paddle.rec.height), paddle.color);
 }
 
 void Initialize()
@@ -20,7 +46,7 @@ void Initialize()
 	paddle.rec.width = 10.0f * screenWidthScalar;
 	paddle.rec.height = 2.0f * screenHeightScalar;
 	paddle.rec.x = screenWidth / 2 - paddle.rec.width / 2;
-	paddle.rec.y = (screenHeight / 10 * 9);
+	paddle.rec.y = static_cast<float>(screenHeight / 10 * 9);
 
 	paddle.lives = 3;
 

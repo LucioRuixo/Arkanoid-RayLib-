@@ -7,6 +7,8 @@ namespace game
 {
 namespace gameplay
 {
+extern Rectangle pauseMenu;
+
 void Initialize();
 void Update();
 void Draw();

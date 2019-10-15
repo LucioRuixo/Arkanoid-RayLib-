@@ -7,6 +7,8 @@ namespace game
 {
 namespace ball
 {
+	const float MAX_SPEED = 75;
+
 struct Ball
 {
 	Color color;
@@ -18,13 +20,13 @@ struct Ball
 	bool up;
 
 	float radius;
-	float speed;
 };
 
 extern Ball ball;
 
 void Draw();
 void Initialize();
+void Movement();
 }
 }
 
