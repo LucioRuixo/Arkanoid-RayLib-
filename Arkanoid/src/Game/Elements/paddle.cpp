@@ -11,6 +11,20 @@ Paddle paddle;
 
 static float newBallDirectionX;
 
+void Initialize()
+{
+	paddle.color = RAYWHITE;
+
+	paddle.rec.width = 10.0f * screenWidthScalar;
+	paddle.rec.height = 2.0f * screenHeightScalar;
+	paddle.rec.x = screenWidth / 2 - paddle.rec.width / 2;
+	paddle.rec.y = static_cast<float>(screenHeight / 10 * 9);
+
+	paddle.lives = 3;
+
+	paddle.speed = SPEED;
+}
+
 void CheckColissionWithBall()
 {
 	if (CheckCollisionCircleRec(ball::ball.position, ball::ball.radius, paddle.rec))
@@ -37,20 +51,6 @@ void CheckColissionWithBall()
 void Draw()
 {
 	DrawRectangle(static_cast<int>(paddle.rec.x), static_cast<int>(paddle.rec.y), static_cast<int>(paddle.rec.width), static_cast<int>(paddle.rec.height), paddle.color);
-}
-
-void Initialize()
-{
-	paddle.color = RAYWHITE;
-
-	paddle.rec.width = 10.0f * screenWidthScalar;
-	paddle.rec.height = 2.0f * screenHeightScalar;
-	paddle.rec.x = screenWidth / 2 - paddle.rec.width / 2;
-	paddle.rec.y = static_cast<float>(screenHeight / 10 * 9);
-
-	paddle.lives = 3;
-
-	paddle.speed = SPEED;
 }
 }
 }

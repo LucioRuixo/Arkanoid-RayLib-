@@ -7,6 +7,8 @@
 
 namespace game
 {
+namespace buttons
+{
 enum Function
 {
 	ActivateFullscreen,
@@ -33,8 +35,6 @@ extern Button return_;
 
 extern float buttonsX;
 
-void CheckButtonPressing(Button button);
-void DrawButton(Button button);
 namespace main_menu
 {
 	void InitializeButtons();
@@ -43,9 +43,12 @@ namespace game_over
 {
 	void InitializeButtons();
 }
+void CheckButtonPressing(Button button);
 void UpdateButton(Button &button);
+void DrawButton(Button button);
 
 bool CursorOverButton(Button button);
+}
 }
 
 #endif

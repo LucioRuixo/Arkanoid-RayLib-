@@ -7,9 +7,9 @@ namespace game
 {
 namespace levels
 {
+const int BRICKS_PER_LINE = 10;
+const int BRICKS_PER_COLUMN = 8;
 const int TOTAL_DISTANCE_BETWEEN_BRICKS = 50;
-const int LAYOUT_WIDTH = 10;
-const int LAYOUT_HEIGHT = 8;
 
 struct Brick
 {
@@ -19,17 +19,17 @@ struct Brick
 	int state;
 };
 
-extern Brick layout[LAYOUT_HEIGHT][LAYOUT_WIDTH];
+extern Brick layout[BRICKS_PER_COLUMN][BRICKS_PER_LINE];
 
-extern int playScreenMinX;
-extern int playScreenMaxX;
 extern int brickHeight;
 extern int brickWidth;
+extern int playScreenMinX;
+extern int playScreenMaxX;
 
+void InitializeLayout();
+void Initialize();
 void CheckColissionWithBall();
 void Draw();
-void Initialize();
-void InitializeLayout();
 }
 }
 

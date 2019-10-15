@@ -13,18 +13,6 @@ namespace gameplay
 {
 Rectangle pauseMenu;
 
-static void CheckCollisions()
-{
-	levels::CheckColissionWithBall();
-	paddle::CheckColissionWithBall();
-}
-
-static void DrawPlayScreenLimits()
-{
-	DrawLine(levels::playScreenMinX, 0, levels::playScreenMinX, screenHeight - 1, RAYWHITE);
-	DrawLine(levels::playScreenMaxX, 0, levels::playScreenMaxX, screenHeight - 1, RAYWHITE);
-}
-
 static void Input()
 {
 	if (ball::ball.still)
@@ -43,11 +31,17 @@ static void Input()
 		paddle::paddle.rec.x += paddle::paddle.speed * screenWidthScalar * deltaTime;
 }
 
+static void CheckCollisions()
+{
+	levels::CheckColissionWithBall();
+	paddle::CheckColissionWithBall();
+}
+
 static bool CheckVictory()
 {
-	for (int y = 0; y < levels::LAYOUT_HEIGHT; y++)
+	for (int y = 0; y < levels::BRICKS_PER_COLUMN; y++)
 	{
-		for (int x = 0; x < levels::LAYOUT_WIDTH; x++)
+		for (int x = 0; x < levels::BRICKS_PER_LINE; x++)
 		{
 			if (levels::layout[y][x].state == 1)
 				return false;
@@ -55,6 +49,12 @@ static bool CheckVictory()
 	}
 
 	return true;
+}
+
+static void DrawPlayScreenLimits()
+{
+	DrawLine(levels::playScreenMinX, 0, levels::playScreenMinX, screenHeight - 1, RAYWHITE);
+	DrawLine(levels::playScreenMaxX, 0, levels::playScreenMaxX, screenHeight - 1, RAYWHITE);
 }
 
 void Initialize()
@@ -71,18 +71,18 @@ void Initialize()
 
 void Update()
 {
-	UpdateButton(pause);
+	buttons::UpdateButton(buttons::pause);
 
 	if (paddle::paddle.lives > 0)
 	{
-		if(CheckVictory())
-			currentGameState = GameState::GameOver;
-
 		Input();
 
 		CheckCollisions();
 
 		ball::Movement();
+
+		if (CheckVictory())
+			currentGameState = GameState::GameOver;
 	}
 	else
 	{

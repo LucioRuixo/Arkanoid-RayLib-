@@ -38,14 +38,6 @@ static void InitializeSounds()
 	hitSFX = LoadSound("audio/SFX/hitSFX.ogg");
 }
 
-static void UnloadSounds()
-{
-	UnloadMusicStream(music);
-
-	UnloadSound(buttonSFX);
-	UnloadSound(hitSFX);
-}
-
 static void Initialize()
 {
 	currentGameState = GameState::MainMenu;
@@ -55,9 +47,9 @@ static void Initialize()
 	gameShouldClose = false;
 
 	screenWidth = WINDOW_WIDTH;
-	screenWidthScalar = static_cast<float>(screenWidth) / 100;
+	screenWidthScalar = static_cast<float>(screenWidth) / 100.0f;
 	screenHeight = WINDOW_HEIGHT;
-	screenHeightScalar = static_cast<float>(screenHeight) / 100;
+	screenHeightScalar = static_cast<float>(screenHeight) / 100.0f;
 
 	deltaTime = 0;
 
@@ -68,18 +60,14 @@ static void Initialize()
 	SetExitKey(KEY_P);
 	InitAudioDevice();
 	InitializeSounds();
-	main_menu::InitializeButtons();
+	buttons::main_menu::InitializeButtons();
 	gameplay::Initialize();
-	game_over::InitializeButtons();
+	buttons::game_over::InitializeButtons();
 	SetTargetFPS(60);
 }
 
-static void Update()
+static void Input()
 {
-	cursor = GetMousePosition();
-
-	UpdateDeltaTime();
-
 	if (IsKeyPressed(KEY_M))
 	{
 		if (IsMusicPlaying(music))
@@ -87,6 +75,17 @@ static void Update()
 		else
 			ResumeMusicStream(music);
 	}
+}
+
+static void Update()
+{
+	UpdateDeltaTime();
+
+	UpdateMusicStream(music);
+
+	cursor = GetMousePosition();
+
+	Input();
 
 	switch (currentGameState)
 	{
@@ -133,6 +132,14 @@ static void Draw()
 	}
 
 	EndDrawing();
+}
+
+static void UnloadSounds()
+{
+	UnloadMusicStream(music);
+
+	UnloadSound(buttonSFX);
+	UnloadSound(hitSFX);
 }
 
 static void Close()

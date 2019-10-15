@@ -109,12 +109,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\include;$(SolutionDir)src\Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -126,8 +127,7 @@
       <Command>copy "$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\bin\raylib.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>$(ProjectDir)Batch.bat "$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\bin\raylib.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -167,8 +167,7 @@
       <Command>copy "$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\bin\raylib.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>$(ProjectDir)Batch.bat "$(SolutionDir)lib\raylib-2.5.0-Win32-msvc15\bin\raylib.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

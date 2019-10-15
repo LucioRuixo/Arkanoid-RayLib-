@@ -8,12 +8,49 @@ namespace game
 {
 namespace levels
 {
-Brick layout[LAYOUT_HEIGHT][LAYOUT_WIDTH];
+Brick layout[BRICKS_PER_COLUMN][BRICKS_PER_LINE];
 
-int playScreenMinX;
-int playScreenMaxX;
 int brickHeight;
 int brickWidth;
+int playScreenMinX;
+int playScreenMaxX;
+
+void InitializeLayout()
+{
+	int brickXSum;
+	int brickY = 50;
+
+	for (int y = 0; y < BRICKS_PER_COLUMN; y++)
+	{
+		brickXSum = 0;
+
+		for (int x = 0; x < BRICKS_PER_LINE; x++)
+		{
+			layout[y][x].color = RAYWHITE;
+
+			layout[y][x].rec.width = static_cast<float>(brickWidth);
+			layout[y][x].rec.height = static_cast<float>(brickHeight);
+			layout[y][x].rec.x = static_cast<float>(playScreenMinX) + static_cast<float>(TOTAL_DISTANCE_BETWEEN_BRICKS) / static_cast<float>(BRICKS_PER_LINE) + static_cast<float>(brickXSum);
+			layout[y][x].rec.y = static_cast<float>(brickY);
+
+			layout[y][x].state = 1;
+
+			brickXSum += brickWidth + TOTAL_DISTANCE_BETWEEN_BRICKS / (BRICKS_PER_LINE + 1);
+		}
+
+		brickY += brickHeight + TOTAL_DISTANCE_BETWEEN_BRICKS / (BRICKS_PER_LINE + 1);
+	}
+}
+
+void Initialize()
+{
+	playScreenMinX = screenWidth / 8 * 2;
+	playScreenMaxX = screenWidth / 8 * 6;
+	brickHeight = 25;
+	brickWidth = (playScreenMaxX - playScreenMinX - TOTAL_DISTANCE_BETWEEN_BRICKS) / BRICKS_PER_LINE;
+
+	InitializeLayout();
+}
 
 void CheckColissionWithBall()
 {
@@ -44,9 +81,9 @@ void CheckColissionWithBall()
 		ball::ball.still = true;
 	}
 
-	for (int y = 0; y < LAYOUT_HEIGHT; y++)
+	for (int y = 0; y < BRICKS_PER_COLUMN; y++)
 	{
-		for (int x = 0; x < LAYOUT_WIDTH; x++)
+		for (int x = 0; x < BRICKS_PER_LINE; x++)
 		{
 			if (layout[y][x].state == 1 && CheckCollisionCircleRec(ball::ball.position, ball::ball.radius, layout[y][x].rec))
 			{
@@ -61,50 +98,13 @@ void CheckColissionWithBall()
 
 void Draw()
 {
-	for (int y = 0; y < LAYOUT_HEIGHT; y++)
+	for (int y = 0; y < BRICKS_PER_COLUMN; y++)
 	{
-		for (int x = 0; x < LAYOUT_WIDTH; x++)
+		for (int x = 0; x < BRICKS_PER_LINE; x++)
 		{
 			if (layout[y][x].state == 1)
 				DrawRectangle(static_cast<int>(layout[y][x].rec.x), static_cast<int>(layout[y][x].rec.y), static_cast<int>(layout[y][x].rec.width), static_cast<int>(layout[y][x].rec.height), layout[y][x].color);
 		}
-	}
-}
-
-void Initialize()
-{
-	playScreenMinX = screenWidth / 8 * 2;
-	playScreenMaxX = screenWidth / 8 * 6;
-	brickHeight = 25;
-	brickWidth = (playScreenMaxX - playScreenMinX - TOTAL_DISTANCE_BETWEEN_BRICKS) / LAYOUT_WIDTH;
-
-	InitializeLayout();
-}
-
-void InitializeLayout()
-{
-	int brickXSum;
-	int brickY = 50;
-
-	for (int y = 0; y < LAYOUT_HEIGHT; y++)
-	{
-		brickXSum = 0;
-
-		for (int x = 0; x < LAYOUT_WIDTH; x++)
-		{
-			layout[y][x].color = RAYWHITE;
-
-			layout[y][x].rec.width = static_cast<float>(brickWidth);
-			layout[y][x].rec.height = static_cast<float>(brickHeight);
-			layout[y][x].rec.x = static_cast<float>(playScreenMinX) + static_cast<float>(TOTAL_DISTANCE_BETWEEN_BRICKS) / static_cast<float>(LAYOUT_WIDTH) + static_cast<float>(brickXSum);
-			layout[y][x].rec.y = static_cast<float>(brickY);
-
-			layout[y][x].state = 1;
-
-			brickXSum += brickWidth + TOTAL_DISTANCE_BETWEEN_BRICKS / (LAYOUT_WIDTH + 1);
-		}
-
-		brickY += brickHeight + TOTAL_DISTANCE_BETWEEN_BRICKS / (LAYOUT_WIDTH + 1);
 	}
 }
 }

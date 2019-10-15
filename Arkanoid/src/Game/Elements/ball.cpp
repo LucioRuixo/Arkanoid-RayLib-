@@ -9,11 +9,6 @@ namespace ball
 {
 Ball ball;
 
-void Draw()
-{
-	DrawCircle(static_cast<int>(ball.position.x), static_cast<int>(ball.position.y), ball.radius, ball.color);
-}
-
 void Initialize()
 {
 	ball.color = RAYWHITE;
@@ -44,6 +39,11 @@ void Movement()
 		ball.right ? ball.position.x += ball.direction.x * screenWidthScalar * deltaTime : ball.position.x -= ball.direction.x * screenWidthScalar * deltaTime;
 		ball.up ? ball.position.y -= ball.direction.y * screenHeightScalar * deltaTime : ball.position.y += ball.direction.y * screenHeightScalar * deltaTime;
 	}
+}
+
+void Draw()
+{
+	DrawCircle(static_cast<int>(ball.position.x), static_cast<int>(ball.position.y), ball.radius, ball.color);
 }
 }
 }

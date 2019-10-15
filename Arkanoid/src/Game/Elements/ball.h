@@ -24,9 +24,9 @@ struct Ball
 
 extern Ball ball;
 
-void Draw();
 void Initialize();
 void Movement();
+void Draw();
 }
 }
 

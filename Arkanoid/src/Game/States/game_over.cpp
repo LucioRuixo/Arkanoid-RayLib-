@@ -9,12 +9,12 @@ namespace game_over
 {
 void Update()
 {
-	UpdateButton(return_);
+	buttons::UpdateButton(buttons::return_);
 }
 
 void Draw()
 {
-	DrawButton(return_);
+	buttons::DrawButton(buttons::return_);
 	paddle::paddle.lives > 0 ? DrawText("YOU WIN :)", static_cast<int>(screenWidth / 2 - 100), static_cast<int>(screenHeight / 2), 35, RAYWHITE) :
 	DrawText("YOU LOSE :(", static_cast<int>(screenWidth / 2 - 100), static_cast<int>(screenHeight / 2), 35, RAYWHITE);
 }
