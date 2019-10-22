@@ -6,8 +6,9 @@ namespace game
 {
 namespace buttons
 {
+Button credits;
 Button exit;
-Button fullScreen_;
+Button fullScreen;
 Button pause;
 Button play;
 Button return_;
@@ -20,20 +21,27 @@ namespace main_menu
 	{
 		buttonsX = static_cast<float>(screenWidth) / 6.0f;
 
+		credits.function = Function::ChangeState;
+		credits.state = GameState::CreditsScreen;
+		credits.rec.width = 7.0f * screenWidthScalar;
+		credits.rec.height = 4.0f * screenHeightScalar;
+		credits.rec.x = buttonsX;
+		credits.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2 + 40;
+		credits.text = "Credits";
+
 		exit.function = Function::ExitGame;
 		exit.rec.width = 4.0f * screenWidthScalar;
 		exit.rec.height = 4.0f * screenHeightScalar;
 		exit.rec.x = buttonsX;
-		exit.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2 + 40;
+		exit.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2 + 80;
 		exit.text = "Exit";
 
-		fullScreen_.function = Function::ActivateFullscreen;
-		fullScreen_.rec.width = 10.0f * screenWidthScalar;
-		fullScreen_.rec.height = 4.0f * screenHeightScalar;
-		fullScreen_.rec.x = screenWidth - fullScreen_.rec.width - 1.0f * screenWidthScalar;
-		fullScreen_.rec.y = 1.0f * screenHeightScalar;
-		fullScreen_.text = "Fullscreen";
-		cout << "Fullscreen: width " << fullScreen_.rec.width;
+		fullScreen.function = Function::ActivateFullscreen;
+		fullScreen.rec.width = 10.0f * screenWidthScalar;
+		fullScreen.rec.height = 4.0f * screenHeightScalar;
+		fullScreen.rec.x = screenWidth - fullScreen.rec.width - 1.0f * screenWidthScalar;
+		fullScreen.rec.y = 1.0f * screenHeightScalar;
+		fullScreen.text = "Fullscreen";
 
 		play.function = Function::ChangeState;
 		play.state = GameState::Gameplay;
@@ -42,6 +50,20 @@ namespace main_menu
 		play.rec.x = buttonsX;
 		play.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2;
 		play.text = "PLAY";
+	}
+}
+
+namespace credits_screen
+{
+	void InitializeButtons()
+	{
+		return_.function = Function::ChangeState;
+		return_.state = GameState::MainMenu;
+		return_.rec.width = 9.0f * screenWidthScalar;
+		return_.rec.height = 3.0f * screenHeightScalar;
+		return_.rec.x = 1.0f * screenWidthScalar;
+		return_.rec.y = 1.0f * screenHeightScalar;
+		return_.text = "< Return";
 	}
 }
 

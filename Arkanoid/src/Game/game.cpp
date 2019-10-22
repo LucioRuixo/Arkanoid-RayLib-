@@ -4,6 +4,8 @@
 #include "Elements/levels.h"
 #include "Elements/paddle.h"
 #include "States/main_menu.h"
+#include "States/credits_screen.h"
+#include "States/credits_screen.h"
 #include "States/gameplay.h"
 #include "States/game_over.h"
 
@@ -61,6 +63,7 @@ static void Initialize()
 	InitAudioDevice();
 	InitializeSounds();
 	buttons::main_menu::InitializeButtons();
+	credits_screen::Initialize();
 	gameplay::Initialize();
 	buttons::game_over::InitializeButtons();
 	SetTargetFPS(60);
@@ -94,6 +97,11 @@ static void Update()
 		main_menu::Update();
 		break;
 	}
+	case GameState::CreditsScreen:
+	{
+		credits_screen::Update();
+		break;
+	}
 	case GameState::Gameplay:
 	{
 		gameplay::Update();
@@ -117,6 +125,11 @@ static void Draw()
 	case GameState::MainMenu:
 	{
 		main_menu::Draw();
+		break;
+	}
+	case GameState::CreditsScreen:
+	{
+		credits_screen::Draw();
 		break;
 	}
 	case GameState::Gameplay:

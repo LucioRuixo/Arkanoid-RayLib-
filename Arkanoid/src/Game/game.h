@@ -1,11 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <iostream>
-
 #include "raylib.h"
-
-using namespace std;
 
 namespace game
 {
@@ -17,6 +13,7 @@ const int WINDOW_WIDTH = 1280;
 enum GameState
 {
 	MainMenu,
+	CreditsScreen,
 	Gameplay,
 	GameOver
 };

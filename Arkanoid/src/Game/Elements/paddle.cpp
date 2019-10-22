@@ -34,7 +34,6 @@ void CheckColissionWithBall()
 		ball::ball.up = true;
 
 		newBallDirectionX = (ball::ball.position.x - paddle.rec.x + paddle.rec.width / 2) / 4;
-		cout << newBallDirectionX << endl;
 		if (newBallDirectionX < ball::MAX_SPEED / 2)
 		{
 			ball::ball.right = false;

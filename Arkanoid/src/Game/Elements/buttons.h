@@ -27,8 +27,9 @@ struct Button
 	bool cursorOverButton;
 };
 
+extern Button credits;
 extern Button exit;
-extern Button fullScreen_;
+extern Button fullScreen;
 extern Button pause;
 extern Button play;
 extern Button return_;
@@ -36,6 +37,10 @@ extern Button return_;
 extern float buttonsX;
 
 namespace main_menu
+{
+	void InitializeButtons();
+}
+namespace credits_screen
 {
 	void InitializeButtons();
 }
