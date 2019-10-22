@@ -24,6 +24,7 @@ Sound hitSFX;
 
 bool fullscreenOn;
 bool gameShouldClose;
+bool victory;
 
 int screenHeight;
 int screenWidth;
@@ -47,6 +48,7 @@ static void Initialize()
 
 	fullscreenOn = false;
 	gameShouldClose = false;
+	victory = false;
 
 	screenWidth = WINDOW_WIDTH;
 	screenWidthScalar = static_cast<float>(screenWidth) / 100.0f;

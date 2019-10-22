@@ -82,11 +82,25 @@ void Update()
 		ball::Movement();
 
 		if (CheckVictory())
+		{
+			victory = true;
+
 			currentGameState = GameState::GameOver;
+
+			levels::Initialize();
+			paddle::Initialize();
+			ball::Initialize();
+		}
 	}
 	else
 	{
+		victory = false;
+
 		currentGameState = GameState::GameOver;
+
+		levels::Initialize();
+		paddle::Initialize();
+		ball::Initialize();
 	}
 }
 

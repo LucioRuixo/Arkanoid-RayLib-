@@ -28,6 +28,7 @@ extern Sound hitSFX;
 
 extern bool fullscreenOn;
 extern bool gameShouldClose;
+extern bool victory;
 
 extern int screenWidth;
 extern int screenHeight;

@@ -27,7 +27,7 @@ void Draw()
 	buttons::DrawButton(buttons::return_);
 
 	DrawText("CREDITS:", creditsX, creditsY, 30, RAYWHITE);
-	DrawText("AUTOR AND PROGRAMMER", creditsX, static_cast<int>(creditsY + lineSpace * 2.5), 20, RAYWHITE);
+	DrawText("AUTHOR AND PROGRAMMER", creditsX, static_cast<int>(creditsY + lineSpace * 2.5), 20, RAYWHITE);
 	DrawText("Lucio Ruixo", creditsX, creditsY + static_cast<int>(lineSpace * 3.5f), 20, RAYWHITE);
 	DrawText("TOOLS USED", creditsX, creditsY + lineSpace * 5, 20, RAYWHITE);
 	DrawText("Library: RayLib 2.5.0 Win32 ... https://www.raylib.com/", creditsX, creditsY + lineSpace * 6, 20, RAYWHITE);

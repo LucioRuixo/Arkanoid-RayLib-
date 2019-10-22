@@ -19,27 +19,27 @@ namespace main_menu
 {
 	void InitializeButtons()
 	{
-		buttonsX = static_cast<float>(screenWidth) / 6.0f;
+		buttonsX = static_cast<float>(screenWidth / 6);
 
 		credits.function = Function::ChangeState;
 		credits.state = GameState::CreditsScreen;
 		credits.rec.width = 7.0f * screenWidthScalar;
 		credits.rec.height = 4.0f * screenHeightScalar;
 		credits.rec.x = buttonsX;
-		credits.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2 + 40;
+		credits.rec.y = (static_cast<float>(screenHeight / 3) * 2 + 5 * screenHeightScalar);
 		credits.text = "Credits";
 
 		exit.function = Function::ExitGame;
 		exit.rec.width = 4.0f * screenWidthScalar;
 		exit.rec.height = 4.0f * screenHeightScalar;
 		exit.rec.x = buttonsX;
-		exit.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2 + 80;
+		exit.rec.y = (static_cast<float>(screenHeight / 3) * 2 + 10 * screenHeightScalar);
 		exit.text = "Exit";
 
 		fullScreen.function = Function::ActivateFullscreen;
 		fullScreen.rec.width = 10.0f * screenWidthScalar;
 		fullScreen.rec.height = 4.0f * screenHeightScalar;
-		fullScreen.rec.x = screenWidth - fullScreen.rec.width - 1.0f * screenWidthScalar;
+		fullScreen.rec.x = screenWidth - fullScreen.rec.width - screenWidthScalar;
 		fullScreen.rec.y = 1.0f * screenHeightScalar;
 		fullScreen.text = "Fullscreen";
 
@@ -48,7 +48,7 @@ namespace main_menu
 		play.rec.width = 5.0f * screenWidthScalar;
 		play.rec.height = 4.0f * screenHeightScalar;
 		play.rec.x = buttonsX;
-		play.rec.y = (static_cast<float>(screenHeight) / 3.0f) * 2;
+		play.rec.y = (static_cast<float>(screenHeight / 3) * 2);
 		play.text = "PLAY";
 	}
 }
